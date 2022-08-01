@@ -49,7 +49,9 @@ export default function TransactionListItem({ item, mainnetProvider, blockExplor
   const txDisplay = ()=>{
     const toSelf = (item?.to == readContracts[contractName].address)
 
-    if(toSelf && txnData[item.hash]?.functionFragment?.name == "addSigner")
+    console.log("name: ", toSelf, " contract", contractName, " ", readContracts, " ", item); 
+
+    if(toSelf && txnData[item.hash]?.functionFragment?.name == "addOwner")
     {
       return (
         <>
@@ -92,12 +94,13 @@ export default function TransactionListItem({ item, mainnetProvider, blockExplor
       )
     }else if(!txnData[item.hash]?.functionFragment?.name)
     {
+      console.log("item: ", item);
       return (
         <>
           <span style={{fontSize:16,fontWeight:"bold"}}>
             Transfer
           </span>
-          <Balance balance={item.value ? item.value : parseEther("" + parseFloat(item.amount).toFixed(12))} dollarMultiplier={price} />
+          <Balance balance={item.value ? item.value : parseEther("" + parseFloat(item.amount ? item.amount : "0").toFixed(12))} dollarMultiplier={price} />
           to
           <Address address={item.to} ensProvider={mainnetProvider} blockExplorer={blockExplorer} fontSize={16} />
           <>

@@ -29,9 +29,9 @@ export default function Transactions({
   const [transactions, setTransactions] = useState();
   usePoller(() => {
     const getTransactions = async () => {
-      const res = await axios.get(
-        poolServerUrl + readContracts[contractName].address + "_" + localProvider._network.chainId,
-      );
+      const url = poolServerUrl + readContracts[contractName].address + "_" + localProvider._network.chainId;
+      console.log("url:", url);
+      const res = await axios.get(url);
 
       console.log("backend stuff res", res.data);
 

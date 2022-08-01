@@ -91,6 +91,8 @@ export default function CreateTransaction({
           callData = readContracts[contractName]?.interface?.encodeFunctionData(methodName, [to, newSignaturesRequired]);
           executeToAddress = contractAddress;
         }
+        
+        console.log("execute: " + methodName + " " + executeToAddress + " " + newSignaturesRequired + " callData: " + callData);
 
         const newHash = await readContracts[contractName].getTransactionHash(
           nonce.toNumber(),
@@ -146,8 +148,8 @@ export default function CreateTransaction({
           <div style={{ margin: 8, padding: 8 }}>
             <Select value={methodName} style={{ width: "100%" }} onChange={setMethodName}>
               <Option key="transferFunds">Send ETH</Option>
-              <Option key="addSigner">Add Signer</Option>
-              <Option key="removeSigner">Remove Signer</Option>
+              <Option key="addOwner">Add Owner</Option>
+              <Option key="removeOwner">Remove Owner</Option>
               <Option key="customCallData">Custom Call Data</Option>
               <Option key="wcCallData">
                 <img src="walletconnect-logo.svg" style={{ height: 20, width: 20 }} /> WalletConnect
@@ -176,7 +178,7 @@ export default function CreateTransaction({
                 />
               </div>
               <div style={inputStyle}>
-                {(methodName == "addSigner" || methodName == "removeSigner") &&
+                {(methodName == "addOwner" || methodName == "removeOwner") &&
                   <InputNumber
                     style={{ width: "100%" }}
                     placeholder="New # of signatures required"

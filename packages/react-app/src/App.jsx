@@ -89,7 +89,7 @@ function App(props) {
   const targetNetwork = NETWORKS[selectedNetwork];
 
   // backend transaction handler:
-  let BACKEND_URL = "https://localhost:49899";
+  let BACKEND_URL = "http://localhost:49899/";
   if (targetNetwork && targetNetwork.name && targetNetwork.name != "localhost") {
     //BACKEND_URL = "https://backend.multisig.lol:49899/";
   }
@@ -276,32 +276,6 @@ function App(props) {
     }
   }, [allExecuteTrandsactionEvents, currentMultiSigAddress, nonce]);
 
-
-
-  /*
- // event Deposit with sender, ether amount, wallet balance
-    event Deposit(
-        address indexed sender,
-        uint256 etherAmount,
-        uint256 walletBalance
-    );
-
-    // event ExecuteTrasaction with executer(must be owner), receiver address,
-    // ether amount, custom data(bytes), nonce, the execution hash and the execution result(bytes).
-    event ExecuteTrasaction(
-        address indexed owner,
-        address indexed to,
-        uint256 etherAmount,
-        bytes customData,
-        uint256 nonce,
-        bytes32 executionHash,
-        bytes executionResult
-    );
-
-    // event OwnerChanged with related owner address, wheather added(true for added, false for removed)
-    event OwnerChanged(address indexed owner, bool added);
-  */
-
   // EXTERNAL CONTRACT EXAMPLE:
   //
   // If you want to bring in the mainnet DAI contract it would look like:
@@ -325,42 +299,42 @@ function App(props) {
   //
   // 🧫 DEBUG 👨🏻‍🔬
   //
-  useEffect(() => {
-    if (
-      DEBUG &&
-      mainnetProvider &&
-      address &&
-      selectedChainId &&
-      yourLocalBalance &&
-      yourMainnetBalance &&
-      readContracts &&
-      writeContracts &&
-      mainnetContracts
-    ) {
-      console.log("_____________________________________ 🏗 scaffold-eth _____________________________________");
-      console.log("🌎 mainnetProvider", mainnetProvider);
-      console.log("🏠 localChainId", localChainId);
-      console.log("👩‍💼 selected address:", address);
-      console.log("🕵🏻‍♂️ selectedChainId:", selectedChainId);
-      console.log("💵 yourLocalBalance", yourLocalBalance ? ethers.utils.formatEther(yourLocalBalance) : "...");
-      console.log("💵 yourMainnetBalance", yourMainnetBalance ? ethers.utils.formatEther(yourMainnetBalance) : "...");
-      console.log("📝 readContracts", readContracts);
-      console.log("🌍 DAI contract on mainnet:", mainnetContracts);
-      console.log("💵 yourMainnetDAIBalance", myMainnetDAIBalance);
-      console.log("🔐 writeContracts", writeContracts);
-    }
-  }, [
-    mainnetProvider,
-    address,
-    selectedChainId,
-    yourLocalBalance,
-    yourMainnetBalance,
-    readContracts,
-    writeContracts,
-    mainnetContracts,
-    localChainId,
-    myMainnetDAIBalance,
-  ]);
+  // useEffect(() => {
+  //   if (
+  //     DEBUG &&
+  //     mainnetProvider &&
+  //     address &&
+  //     selectedChainId &&
+  //     yourLocalBalance &&
+  //     yourMainnetBalance &&
+  //     readContracts &&
+  //     writeContracts &&
+  //     mainnetContracts
+  //   ) {
+  //     console.log("_____________________________________ 🏗 scaffold-eth _____________________________________");
+  //     console.log("🌎 mainnetProvider", mainnetProvider);
+  //     console.log("🏠 localChainId", localChainId);
+  //     console.log("👩‍💼 selected address:", address);
+  //     console.log("🕵🏻‍♂️ selectedChainId:", selectedChainId);
+  //     console.log("💵 yourLocalBalance", yourLocalBalance ? ethers.utils.formatEther(yourLocalBalance) : "...");
+  //     console.log("💵 yourMainnetBalance", yourMainnetBalance ? ethers.utils.formatEther(yourMainnetBalance) : "...");
+  //     console.log("📝 readContracts", readContracts);
+  //     console.log("🌍 DAI contract on mainnet:", mainnetContracts);
+  //     console.log("💵 yourMainnetDAIBalance", myMainnetDAIBalance);
+  //     console.log("🔐 writeContracts", writeContracts);
+  //   }
+  // }, [
+  //   mainnetProvider,
+  //   address,
+  //   selectedChainId,
+  //   yourLocalBalance,
+  //   yourMainnetBalance,
+  //   readContracts,
+  //   writeContracts,
+  //   mainnetContracts,
+  //   localChainId,
+  //   myMainnetDAIBalance,
+  // ]);
 
   const loadWeb3Modal = useCallback(async () => {
     const provider = await web3Modal.connect();
@@ -392,7 +366,7 @@ function App(props) {
 
   const faucetAvailable = localProvider && localProvider.connection && targetNetwork.name.indexOf("local") !== -1;
 
-  const userHasMultiSigs = currentMultiSigAddress ? true : false;
+  const userHasMultiSigs = currentMultiSigAddress ? true : false;  
 
   const handleMultiSigChange = value => {
     setContractNameForEvent(null);

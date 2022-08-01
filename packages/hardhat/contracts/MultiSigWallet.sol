@@ -13,8 +13,8 @@ contract MultiSigWallet {
     // event Deposit with sender, ether amount, wallet balance
     event Deposit(
         address indexed sender,
-        uint256 etherAmount,
-        uint256 walletBalance
+        uint256 amount,
+        uint256 balance
     );
 
     // event ExecuteTrasaction with executer(must be owner), receiver address,
@@ -22,11 +22,11 @@ contract MultiSigWallet {
     event ExecuteTransaction(
         address indexed owner,
         address indexed to,
-        uint256 etherAmount,
-        bytes customData,
+        uint256 value,
+        bytes data,
         uint256 nonce,
-        bytes32 executionHash,
-        bytes executionResult
+        bytes32 hash,
+        bytes result
     );
 
     // event OwnerChanged with related owner address, wheather added(true for added, false for removed)
@@ -257,6 +257,12 @@ contract MultiSigWallet {
     /// === the receive and fallback functions === ///
 
     // receive
+    receive() external payable {
+        emit Deposit(msg.sender, msg.value, address(this).balance);
+    }
 
     // fallback
+    fallback() external payable {
+        emit Deposit(msg.sender, msg.value, address(this).balance);
+    }
 }
