@@ -1,20 +1,16 @@
-# 🏗 Scaffold-ETH
+# 👝 MultiSig 
 
-> everything you need to build on Ethereum! 🚀
-
-🧪 Quickly experiment with Solidity using a frontend that adapts to your smart contract:
-
-![image](https://user-images.githubusercontent.com/2653167/124158108-c14ca380-da56-11eb-967e-69cde37ca8eb.png)
+> EeeMay is learning 🚀 Thanks to [stevenpslade](https://github.com/stevenpslade), my repo was based on my learning from his [maas](https://github.com/stevenpslade/maas) repo.
 
 
 # 🏄‍♂️ Quick Start
 
 Prerequisites: [Node (v16 LTS)](https://nodejs.org/en/download/) plus [Yarn](https://classic.yarnpkg.com/en/docs/install/) and [Git](https://git-scm.com/downloads)
 
-> clone/fork 🏗 scaffold-eth:
+> clone the code:
 
 ```bash
-git clone https://github.com/scaffold-eth/scaffold-eth.git
+git clone https://github.com/Quanhua-Guan/eeemay-maas.git
 ```
 
 > install and start your 👷‍ Hardhat chain:
@@ -39,7 +35,7 @@ cd scaffold-eth
 yarn deploy
 ```
 
-🔏 Edit your smart contract `YourContract.sol` in `packages/hardhat/contracts`
+🔏 Edit your smart contract `MultiSigMagician.sol` in `packages/hardhat/contracts`
 
 📝 Edit your frontend `App.jsx` in `packages/react-app/src`
 
@@ -68,7 +64,7 @@ Documentation, tutorials, challenges, and many more resources, visit: [docs.scaf
 
 📕 Read the docs: https://docs.soliditylang.org
 
-📚 Go through each topic from [solidity by example](https://solidity-by-example.org) editing `YourContract.sol` in **🏗 scaffold-eth**
+📚 Go through each topic from [solidity by example](https://solidity-by-example.org) editing `MultiSigMagician.sol` in **🏗 scaffold-eth**
 
 - [Primitive Data Types](https://solidity-by-example.org/primitives/)
 - [Mappings](https://solidity-by-example.org/mapping/)
@@ -85,7 +81,7 @@ Documentation, tutorials, challenges, and many more resources, visit: [docs.scaf
 
 Check out all the [active branches](https://github.com/scaffold-eth/scaffold-eth/branches/active), [open issues](https://github.com/scaffold-eth/scaffold-eth/issues), and join/fund the 🏰 [BuidlGuidl](https://BuidlGuidl.com)!
 
-  
+
  - 🚤  [Follow the full Ethereum Speed Run](https://medium.com/@austin_48503/%EF%B8%8Fethereum-dev-speed-run-bd72bcba6a4c)
 
 
