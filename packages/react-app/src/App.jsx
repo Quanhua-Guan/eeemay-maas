@@ -90,7 +90,7 @@ function App(props) {
 
   console.log("cachedNetwork: ", cachedNetwork);
 
-  const targetNetwork = NETWORKS[cachedNetwork || "mainnet"];
+  const targetNetwork = NETWORKS[cachedNetwork || "rinkeby"];
 
   // backend transaction handler:
   let BACKEND_URL = "http://localhost:49899/";
