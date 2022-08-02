@@ -86,12 +86,16 @@ function App(props) {
   const [selectedNetwork, setSelectedNetwork] = useState(networkOptions[0]);
   const location = useLocation();
 
-  const targetNetwork = NETWORKS[selectedNetwork];
+  const cachedNetwork = window.localStorage.getItem("network");
+
+  console.log("cachedNetwork: ", cachedNetwork);
+
+  const targetNetwork = NETWORKS[cachedNetwork || "mainnet"];
 
   // backend transaction handler:
   let BACKEND_URL = "http://localhost:49899/";
   if (targetNetwork && targetNetwork.name && targetNetwork.name != "localhost") {
-    //BACKEND_URL = "https://backend.multisig.lol:49899/";
+    BACKEND_URL = "https://backend-eeemay-maas.herokuapp.com/";
   }
 
   // 🔭 block explorer URL
@@ -392,7 +396,7 @@ function App(props) {
       style={{ testAlign: "left", witdth: 170 }}
       onChange={value => {
         if (targetNetwork.chainId != NETWORKS[value].chainId) {
-          WindowsFilled.localStorage.setItem("network", value);
+          window.localStorage.setItem("network", value);
           setTimeout(() => {
             window.location.reload();
           }, 1);
