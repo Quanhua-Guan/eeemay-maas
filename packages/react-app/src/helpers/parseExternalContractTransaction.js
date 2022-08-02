@@ -11,7 +11,7 @@ export default async function parseExternalContractTransaction(contractAddress, 
         module: 'contract',
         action: 'getabi',
         address: contractAddress,
-        apikey: "PJPKDC3BEBJQJVDEPCU5KAIA7WIV8IWQ51",
+        apikey: "PFCZTNTCSW72DNXHMBWRRCE9A7JRHT4PTU",
       }
     })
 
