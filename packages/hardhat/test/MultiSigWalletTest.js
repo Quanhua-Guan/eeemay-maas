@@ -109,7 +109,10 @@ describe("MultiSigWallet Test", () => {
       expect(await MultiSigWallet.isOwner(newOwner)).to.equal(false);
     });
 
-    // I think this is a bug in MultiSigWallet which should be fixed, same for addSigner/removeSigner where newSignaturesRequired is used
+    // I think the signatures required should not be greater than the owners' count.
+    // We want to build an wallet, where owners can vote to execute. If the signatures required is greater than
+    // the owners' count, the wallet is broken, no one can use it again.
+    // so, in my opinion, `1 <= signaturesRequired <= owners.length`
     it("Update Signatures Required to 2 - locking all the funds in the wallet, becasuse there is only 1 signer", async () => {
       /// first, add a new owner
       let newOwner = addr1.address;
@@ -129,7 +132,7 @@ describe("MultiSigWallet Test", () => {
       await MultiSigWallet.executeTransaction(to, value, callData, [signature]);
       expect(await MultiSigWallet.isOwner(newOwner)).to.equal(true);
 
-      /// second, update signatures required to 2
+      /// second, update signatures required to 2, and verify that
       nonce = await MultiSigWallet.nonce();
       to = MultiSigWallet.address;
       value = 0;
