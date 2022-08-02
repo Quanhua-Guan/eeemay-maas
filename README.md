@@ -1,4 +1,4 @@
-# 👝 MultiSig 
+# 👛 MultiSigMagician (MaltiSig as Service)
 
 > EeeMay is learning 🚀 Thanks to [stevenpslade](https://github.com/stevenpslade), my repo was based on my learning from his [maas](https://github.com/stevenpslade/maas) repo.
 
@@ -10,13 +10,14 @@ Prerequisites: [Node (v16 LTS)](https://nodejs.org/en/download/) plus [Yarn](htt
 > clone the code:
 
 ```bash
-git clone https://github.com/Quanhua-Guan/eeemay-maas.git
+git clone https://github.com/Quanhua-Guan/eeemay-maas.git maas
+cd maas
 ```
 
 > install and start your 👷‍ Hardhat chain:
 
 ```bash
-cd scaffold-eth
+cd maas
 yarn install
 yarn chain
 ```
@@ -24,95 +25,55 @@ yarn chain
 > in a second terminal window, start your 📱 frontend:
 
 ```bash
-cd scaffold-eth
+cd maas
 yarn start
 ```
 
-> in a third terminal window, 🛰 deploy your contract:
+> in a third ternal window, start your backend:
+
+```
+cd maas
+yarn backend
+```
+
+> in a fourth terminal window, 🛰 deploy your contract:
 
 ```bash
-cd scaffold-eth
+cd maas
 yarn deploy
 ```
 
-🔏 Edit your smart contract `MultiSigMagician.sol` in `packages/hardhat/contracts`
+> Open `http://localhost:3000/`, the MultiSigMagician and his magical MaltiSigWallet are alive.
 
-📝 Edit your frontend `App.jsx` in `packages/react-app/src`
+# 🧙‍♂️ MultiSigMagician.sol
+Make sure you go through the code at least one time, knowning that MultiSigMagician will create and keep track of each MultiSigWallet.
 
-💼 Edit your deployment scripts in `packages/hardhat/deploy`
+# 👛 MultiSigWallet.sol
+- First, bake up `MultiSigWallet.sol` file to any where you like.
+- Second, go through the code and comments, understanding the logic.
+- ❤️ DELETE ALL CODE:  in `MultiSigWallet.sol` delete all solidity code, but keep the comments there.
+- Write the code yourself again based on your understanding of `MultiSigWallet`, you may change the class name, function name, etc (although it may leads to frontend failed, try to fix them by yourself, and you will learn more about React).
 
-📱 Open http://localhost:3000 to see the app
+You may do this part multiple times if you like. 
 
-# 📚 Documentation
+Play with it at `http://localhost:3000/`.
 
-Documentation, tutorials, challenges, and many more resources, visit: [docs.scaffoldeth.io](https://docs.scaffoldeth.io)
+# 🤖 Backend
+You can use [Heroku](https://www.heroku.com/). (You can skip this part if you are not interested).
+1. you need to create your account,
+2. create a app, 
+3. deploy the backend code (take a look of the code at `packeges/backend/` or fork and use this [repo](https://github.com/Quanhua-Guan/EeeMay-maas-backend.git), the code is the same),
+4. when deploy done, make sure your backend app is up, then get the deployed app server url and  replace `https://backend-eeemay-maas.herokuapp.com/` with your server url in `App.jsx`.
+5. If you have any problem, take a look of [Heroku supports](https://devcenter.heroku.com/).
 
+# ⚙️ Test & Deploy & Build & Surge
+- `yarn test` make sure you pass all test cases.
+- Change `defaultNetwork` (in `packages/hardhat/hardhat.config.js` line `30`) from `localhost` to `rinkeby`.
+- Change `initialNetwork` (in `packages/react-app/src/App.jsx` line 62) from `NETWORKS.localhost` to `NETWORKS.rinkeby`.
+- `yarn deploy` or `yarn deploy --reset` as your wish.
+- `yarn build` and `yarn surge`
 
-# 🍦 Other Flavors
-- [scaffold-eth-typescript](https://github.com/scaffold-eth/scaffold-eth-typescript)
-- [scaffold-eth-tailwind](https://github.com/stevenpslade/scaffold-eth-tailwind)
-- [scaffold-nextjs](https://github.com/scaffold-eth/scaffold-eth/tree/scaffold-nextjs)
-- [scaffold-chakra](https://github.com/scaffold-eth/scaffold-eth/tree/chakra-ui)
-- [eth-hooks](https://github.com/scaffold-eth/eth-hooks)
-- [eth-components](https://github.com/scaffold-eth/eth-components)
-- [scaffold-eth-expo](https://github.com/scaffold-eth/scaffold-eth-expo)
-- [scaffold-eth-truffle](https://github.com/trufflesuite/scaffold-eth)
+# ❤️ Finally, I can help
+Twitter [@xinmuheart](https://twitter.com/xinmuheart)  (follow me will be appreciated)
+Telegrame [@EeeMay](https://telegram.me/EeeeMay)
 
-
-
-# 🔭 Learning Solidity
-
-📕 Read the docs: https://docs.soliditylang.org
-
-📚 Go through each topic from [solidity by example](https://solidity-by-example.org) editing `MultiSigMagician.sol` in **🏗 scaffold-eth**
-
-- [Primitive Data Types](https://solidity-by-example.org/primitives/)
-- [Mappings](https://solidity-by-example.org/mapping/)
-- [Structs](https://solidity-by-example.org/structs/)
-- [Modifiers](https://solidity-by-example.org/function-modifier/)
-- [Events](https://solidity-by-example.org/events/)
-- [Inheritance](https://solidity-by-example.org/inheritance/)
-- [Payable](https://solidity-by-example.org/payable/)
-- [Fallback](https://solidity-by-example.org/fallback/)
-
-📧 Learn the [Solidity globals and units](https://docs.soliditylang.org/en/latest/units-and-global-variables.html)
-
-# 🛠 Buidl
-
-Check out all the [active branches](https://github.com/scaffold-eth/scaffold-eth/branches/active), [open issues](https://github.com/scaffold-eth/scaffold-eth/issues), and join/fund the 🏰 [BuidlGuidl](https://BuidlGuidl.com)!
-
-
- - 🚤  [Follow the full Ethereum Speed Run](https://medium.com/@austin_48503/%EF%B8%8Fethereum-dev-speed-run-bd72bcba6a4c)
-
-
- - 🎟  [Create your first NFT](https://github.com/scaffold-eth/scaffold-eth/tree/simple-nft-example)
- - 🥩  [Build a staking smart contract](https://github.com/scaffold-eth/scaffold-eth/tree/challenge-1-decentralized-staking)
- - 🏵  [Deploy a token and vendor](https://github.com/scaffold-eth/scaffold-eth/tree/challenge-2-token-vendor)
- - 🎫  [Extend the NFT example to make a "buyer mints" marketplace](https://github.com/scaffold-eth/scaffold-eth/tree/buyer-mints-nft)
- - 🎲  [Learn about commit/reveal](https://github.com/scaffold-eth/scaffold-eth-examples/tree/commit-reveal-with-frontend)
- - ✍️  [Learn how ecrecover works](https://github.com/scaffold-eth/scaffold-eth-examples/tree/signature-recover)
- - 👩‍👩‍👧‍👧  [Build a multi-sig that uses off-chain signatures](https://github.com/scaffold-eth/scaffold-eth/tree/meta-multi-sig)
- - ⏳  [Extend the multi-sig to stream ETH](https://github.com/scaffold-eth/scaffold-eth/tree/streaming-meta-multi-sig)
- - ⚖️  [Learn how a simple DEX works](https://medium.com/@austin_48503/%EF%B8%8F-minimum-viable-exchange-d84f30bd0c90)
- - 🦍  [Ape into learning!](https://github.com/scaffold-eth/scaffold-eth/tree/aave-ape)
-
-# 💌 P.S.
-
-🌍 You need an RPC key for testnets and production deployments, create an [Alchemy](https://www.alchemy.com/) account and replace the value of `ALCHEMY_KEY = xxx` in `packages/react-app/src/constants.js` with your new key.
-
-📣 Make sure you update the `InfuraID` before you go to production. Huge thanks to [Infura](https://infura.io/) for our special account that fields 7m req/day!
-
-# 🏃💨 Speedrun Ethereum
-Register as a builder [here](https://speedrunethereum.com) and start on some of the challenges and build a portfolio.
-
-# 💬 Support Chat
-
-Join the telegram [support chat 💬](https://t.me/joinchat/KByvmRe5wkR-8F_zz6AjpA) to ask questions and find others building with 🏗 scaffold-eth!
-
----
-
-🙏 Please check out our [Gitcoin grant](https://gitcoin.co/grants/2851/scaffold-eth) too!
-
-### Automated with Gitpod
-
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#github.com/scaffold-eth/scaffold-eth)
