@@ -14,7 +14,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.get("/", function (req, res) {
   console.log("/");
-  res.status(200).send("hello world");
+  res.status(200).send("hello EeeMay MultiSigMagician!!!");
 });
 app.get("/:key", function (req, res) {
   let key = req.params.key;
@@ -43,11 +43,11 @@ if (fs.existsSync("server.key") && fs.existsSync("server.cert")) {
       },
       app
     )
-    .listen(49899, () => {
+    .listen(process.env.PORT || 49899, () => {
       console.log("HTTPS Listening: 49899");
     });
 } else {
-  var server = app.listen(49899, "0.0.0.0", function () {
+  var server = app.listen(process.env.PORT || 49899, "0.0.0.0", function () {
     console.log("HTTP Listening on port:", server.address().port);
   });
 }
